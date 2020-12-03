@@ -1,4 +1,4 @@
-import sets, strutils, sequtils, options
+import strutils, sequtils
 
 let file = readFile("input.txt")
 let lines = file.splitLines().filterIt(it.len() > 0)

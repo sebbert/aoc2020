@@ -1,4 +1,3 @@
-import sugar
 import strutils
 import sequtils
 import nre except toSeq
