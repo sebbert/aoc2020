@@ -34,9 +34,18 @@ proc countChar(input: string, subject: char): int =
       count += 1
   count
 
-proc isValid(entry: Entry): bool =
+# part 1
+proc isAssumedValid(entry: Entry): bool =
   let count = countChar(entry.password, entry.constraint.character)
   count in entry.constraint.range
 
-# part 1
-echo "Number of valid passwords: ", entries.filter(isValid).len()
+echo "Number of passwords assumed to be valid: ", entries.filter(isAssumedValid).len()
+
+# party 2
+proc isActuallyValid(entry: Entry): bool =
+  let bounds = entry.constraint.range
+  let a = entry.password[bounds.a-1]
+  let b = entry.password[bounds.b-1]
+  a != b and (a == entry.constraint.character or b == entry.constraint.character)
+
+echo "Number of actually valid passwords: ", entries.filter(isActuallyValid).len()
